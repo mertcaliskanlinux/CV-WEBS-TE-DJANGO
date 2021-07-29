@@ -1,0 +1,26 @@
+{% include 'base.html' %}
+{% load static %}
+{% include 'nav.html' %}
+{% block content %}
+
+{% for post in posts %}
+<section class="s1">
+    <div class="main-container">
+
+        <h3 style="text-align: center;">{{post.title}}</h3>
+        <div class="post-wrapper">
+            <div>
+                <div class="post">
+                    <img class="thumbnail" src="{{post.image.url}}">
+                    <div class="post-preview">
+                        <h6 class="post-title">{{post.image_title}}</h6>
+                        <p class="post-intro">{{post.description| slice:":150"}}</p>
+                        <a class="h3" href="{% url 'post_new' post.id %}">{{post.title}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+{% endblock content %}
